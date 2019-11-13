@@ -3,7 +3,7 @@ var express = require('express');
 var app = express();
 var server = http.Server(app);
 var bodyParser = require('body-parser')
-
+app.use(bodyParser.urlencoded({extended:true}))
 var mongo = require('mongodb')
 
 var db, url  = "mongodb+srv://Ashraf:daredevils@cluster0-h5imv.mongodb.net/test?retryWrites=true&w=majority"
@@ -20,10 +20,10 @@ mongo.MongoClient.connect(url,
   }
 )
 
-var save = function(formData){
+var save = function(form_data){
   db.createCollection('articles',function(err,collection){
   var collection = db.collection('articles')
-  collection.save(formData); 
+  collection.save(form_data); 
   })
 }
 
@@ -45,7 +45,7 @@ app.get('/article/:index', function(request, response){
 
 })
 
-app.use(bodyParser.urlencoded({extended:true}))
+
 
 // app.post('/new_article', function(request, response){
   

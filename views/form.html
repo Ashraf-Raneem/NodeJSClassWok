@@ -22,6 +22,7 @@
     $('#submit').click(function(){
         article.title = $("#title").val()
         article.content = $("#content").val()
+        console.log(article);
         $.ajax({
             method: "POST",
             url: '/submit',
