@@ -3,11 +3,34 @@ var express = require('express');
 var app = express();
 var server = http.Server(app);
 var bodyParser = require('body-parser')
-app.use(bodyParser.urlencoded({extended:true}))
 
-let articles= []
+var mongo = require('mongodb')
+
+var db, url  = "mongodb+srv://Ashraf:daredevils@cluster0-h5imv.mongodb.net/test?retryWrites=true&w=majority"
+
+mongo.MongoClient.connect(url, 
+  {useNewUrlParser: true, useUnifiedTopology: true},
+  function(err,client){
+    if(err){
+      console.log("could not connect")
+    }
+    else {
+      db = client.db('node-cw9')
+    }
+  }
+)
+
+var save = function(formData){
+  db.createCollection('articles',function(err,collection){
+  var collection = db.collection('articles')
+  collection.save(formData); 
+  })
+}
+
+var articles = [];
 
 app.post('/submit', function(request,response){
+  save(request.body)
   articles.push(request.body)
   console.log(articles)
   response.json({msg: "successfully received"})
@@ -22,7 +45,7 @@ app.get('/article/:index', function(request, response){
 
 })
 
-
+app.use(bodyParser.urlencoded({extended:true}))
 
 // app.post('/new_article', function(request, response){
   
