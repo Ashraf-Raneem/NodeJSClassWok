@@ -15,25 +15,27 @@
 
     <button id="submit">Submit</button>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-
-    <script>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <script>
     var article = {title:'', content:''}
     $('#submit').click(function(){
         article.title = $("#title").val()
         article.content = $("#content").val()
-        console.log(article);
+        console.log(article)
         $.ajax({
             method: "POST",
-            url: '/submit',
-            data: article
+            url: '/new_article',
+            data:article
         }).done(function(response){
             console.log(response)
         }).fail(function(response){
             console.log(response)
         })
     })
+    
     </script>
-
 </body>
 </html>

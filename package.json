@@ -1,5 +1,5 @@
 {
-  "name": "nodejsclasswok",
+  "name": "nodeserver",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -7,23 +7,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Ashraf-Raneem/NodeJSClassWok.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Ashraf-Raneem/NodeJSClassWok/issues"
-  },
-  "homepage": "https://github.com/Ashraf-Raneem/NodeJSClassWok#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "ejs": "^2.7.1",
     "express": "^4.17.1",
-    "mongodb": "^3.3.4",
-    "mongoose": "^5.7.11"
+    "mongoose": "^5.7.10"
   },
   "devDependencies": {
-    "nodemon": "^1.19.4"
+    "nodemon": "^1.19.3"
   }
 }
